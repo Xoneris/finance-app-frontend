@@ -1,42 +1,70 @@
-<nav class="md:w-[300px] md:h-full md:relative flex md:flex-col w-full h-[74px] fixed bottom-0 bg-ds-grey-900 flex-row rounded-t-lg md:rounded-r-[12px] md:rounded-tl-none md:gap-6">
-    <div class="w-full my-10 ml-8 hidden md:block">
-        <img src="/images/logo-large.svg" alt="Logo"/>
+<nav 
+    class="md:h-full md:relative flex md:flex-col w-screen h-[74px] fixed bottom-0 bg-ds-grey-900 flex-row rounded-t-lg md:rounded-r-[12px] md:rounded-tl-none md:gap-6"
+    [ngClass]="isMinimised == true ? 'md:w-[300px]' : 'md:w-[88px]'"
+>
+
+    <div class="w-full my-10 ml-8 hidden md:flex">
+        @if (isMinimised === false) {
+            <img src="/images/logo-small.svg" alt="Logo"/>
+        } @else if(isMinimised === true) {
+            <img src="/images/logo-large.svg" alt="Logo"/>
+        }
     </div>
-    <div class="flex md:gap-0 md:flex-col grow justify-around md:justify-start items-end md:items-start">
-        <a routerLink="/">
+
+    <div class="flex gap-0 md:flex-col grow w-full justify-around md:justify-start items-end md:items-start">
+        <a routerLink="/" [ngClass]="isMinimised === true ? 'md:pr-6' : 'md:pr-2'">
             <app-nav-element>
                 <img src="/images/icon-nav-overview.svg" alt="icon-overview" />
-                <span>Overview</span>
+                @if (isMinimised === true) {
+                    <span>Overview</span>
+                }
             </app-nav-element>
         </a>
-        <a routerLink="/transactions">
+        <a routerLink="/transactions" [ngClass]="isMinimised === true ? 'md:pr-6' : 'md:pr-2'">
             <app-nav-element>
                 <img src="/images/icon-nav-transactions.svg" alt="icon-transactions" />
-                <span>Transactions</span>
+                @if (isMinimised === true) {
+                    <span>Transactions</span>
+                }
             </app-nav-element>
         </a>
-        <a routerLink="/budgets">
+        <a routerLink="/budgets" [ngClass]="isMinimised === true ? 'md:pr-6' : 'md:pr-2'">
             <app-nav-element>
                 <img src="/images/icon-nav-budgets.svg" alt="icon-budgets" />
-                <span>Budgets</span>
+                @if (isMinimised === true) {
+                    <span>Budgets</span>
+                }
             </app-nav-element>
         </a>
-        <a routerLink="/pots">
+        <a routerLink="/pots" [ngClass]="isMinimised === true ? 'md:pr-6' : 'md:pr-2'">
             <app-nav-element>
                 <img src="/images/icon-nav-pots.svg" alt="icon-pots" />
-                <span>Pots</span>
+                @if (isMinimised === true) {
+                    <span>Pots</span>
+                }
             </app-nav-element>
         </a>
-        <a routerLink="/recurring-bills">
+        <a routerLink="/recurring-bills" [ngClass]="isMinimised === true ? 'md:pr-6' : 'md:pr-2'">
             <app-nav-element>
                 <img src="/images/icon-nav-recurring-bills.svg" alt="icon-recurring-bills" />
-                <span>Recurring Bills</span>
+                @if (isMinimised === true) {
+                    <span>Recurring Bills</span>
+                }
             </app-nav-element>
         </a>
     </div>
 
-    <div class="hidden md:flex items-center pt-4 pl-8 mb-[58px] gap-4 text-ds-grey-300 hover:text-ds-grey-100 hover:cursor-pointer transition-all duration-300">
-        <img src="/images/icon-minimize-menu.svg" alt="minimize-icon" />
-        <span>Minimize Menu</span>
+    <div 
+        class="hidden md:flex items-center pt-4 pl-8 mb-[58px] gap-4 text-ds-grey-300 hover:text-ds-grey-100 hover:cursor-pointer transition-all duration-300"
+        (click)="toggleMinimised()"
+    >
+        @if (isMinimised === true) {
+            <img src="/images/icon-minimize-menu.svg" alt="minimize-icon" />
+        } @else if (isMinimised === false) {
+            <img src="/images/icon-minimize-menu.svg" alt="minimize-icon" class="rotate-180"/>
+        }
+        @if (isMinimised === true) {
+            <span>Minimize Menu</span>
+        }
     </div>
 </nav>
