@@ -1,0 +1,32 @@
+<section class="flex flex-col bg-white p-8 rounded-xl gap-6">
+    <div class="flex justify-between gap-8">
+        <h2 class="text-preset-2 text-ds-grey-900">Transactions</h2>
+        <div class="flex min-w-[100px] gap-4 items-center">
+            <p class="text-preset-4 text-ds-grey-500">View All</p>
+            <img src="/images/icon-caret-right.svg" alt="icon-caret-right" class="p-2" />
+        </div>
+    </div>
+    <div>
+    @for (transaction of transactions.slice(0,5); track transaction.date; let index = $index) {
+        @if (index !== 0) {
+            <div class="w-full h-[1px] bg-ds-grey-100 my-5"></div>
+        }
+        <div class="flex justify-between items-center">
+            <div class="flex gap-4 grow items-center">
+                <img src="{{ transaction.avatar }}" alt="{{ transaction.name }}" class="w-10 h-10 rounded-full"/>
+                <p class="text-preset-4-bold text-ds-grey-900">{{ transaction.name }}</p>
+            </div>
+            <div class="flex flex-col justify-between gap-2 items-end">
+                <p class="text-preset-4-bold"
+                [ngClass]="transaction.amount > 0 ? 'text-ds-green' : 'text-black'"
+                >
+                    {{ transaction.amount | currency }}
+                </p>
+                <p class="text-preset-5 text-ds-grey-500">
+                    {{ transaction.date | date }}
+                </p>
+            </div> 
+        </div>
+        }
+    </div>
+</section>

@@ -25,4 +25,10 @@ module.exports = {
     },
   },
   plugins: [],
+  safelist: [
+    'bg-[#277C78]',
+    'bg-[#82C9D7]',
+    'bg-[#F2CDAC]',
+    'bg-[#626070]',
+  ]
 }

@@ -1,6 +1,6 @@
 <section class="flex flex-col gap-8">
     <h1 class="text-preset-1">Overview</h1>
-    
+
     <div class="w-full flex flex-col sm:flex-row gap-6">
         <app-summary-block class="w-full bg-ds-grey-900 rounded-xl">
             <p class="text-preset-4 text-ds-beige-100">Current Balance</p>
@@ -14,17 +14,16 @@
             <p class="text-preset-4 text-ds-grey-500">Expenses</p>
             <p class="text-preset-1 text-ds-grey-900">$1,700.50</p>
         </app-summary-block>
-
     </div>
 
     <div class="flex gap-6 flex-col md:flex-row">
         <div class="flex flex-col w-full md:w-3/5 gap-6">
             <app-overview-pots></app-overview-pots>
-            <div class="p-8 border">Transactions</div>
+            <app-overview-transactions></app-overview-transactions>
         </div>
         <div class="flex flex-col w-full md:w-2/5 gap-6">
-            <div class="p-8 border">Budgets</div>
-            <div class="p-8 border">Recurring Bills</div>
+            <app-overview-budgets></app-overview-budgets>
+            <app-overview-recurring-bills></app-overview-recurring-bills>
         </div>
     </div>
 
