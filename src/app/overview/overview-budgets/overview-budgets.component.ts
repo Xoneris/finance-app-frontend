@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import * as data from '../../../../data.json'
 import { NgClass, NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-overview-budgets',
   standalone: true,
-  imports: [NgFor, NgClass],
+  imports: [NgFor, NgClass, RouterLink],
   templateUrl: './overview-budgets.component.html',
   styles: ``
 })

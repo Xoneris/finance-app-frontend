@@ -30,5 +30,6 @@ module.exports = {
     'bg-[#82C9D7]',
     'bg-[#F2CDAC]',
     'bg-[#626070]',
+    'bg-[#826CB0]',
   ]
 }

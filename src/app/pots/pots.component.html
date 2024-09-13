@@ -1,1 +1,47 @@
-<p>pots works!</p>
+<section class="flex flex-col gap-8">
+    <div class="flex justify-between">
+        <h1 class="text-preset-1">Pots</h1>
+
+        <button class="bg-ds-grey-900 text-white p-4 rounded-lg hover:bg-ds-grey-500">
+            + Add New Pot
+        </button>
+    </div>
+
+    <div class="flex flex-wrap gap-6">
+        @for (pot of pots; track pots.name) {
+            <div class="flex flex-col flex-wrap w-[calc(50%-12px)] rounded-xl bg-white p-6 gap-8">
+                <div class="flex justify-between items-center">
+                    <div class="flex gap-4 items-center">
+                        <div class="w-4 h-4 rounded-full bg-[{{ pot.theme }}]"></div>
+                        <h2 class="text-preset-2 text-ds-grey-900">{{ pot.name }}</h2>
+                    </div>
+                    <img src="/images/icon-ellipsis.svg" alt="ellipsis-icon"/>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <div class="flex justify-between items-center">
+                        <p class="text-preset-4 text-ds-grey-500">Total Saved</p>
+                        <p class="text-preset-1 text-ds-grey-900">{{ pot.total | currency }}</p>
+                    </div>
+                    <div class="relative h-2">
+                        <div class="absolute top-0 left-0 h-2 bg-[{{ pot.theme }}] rounded z-20" [style.width.%]="pot.total / pot.target * 100"></div>
+                        <div class="absolute top-0 left-0 w-full h-2 bg-ds-beige-100 rounded z-10"></div>
+                    </div>
+                    <div class="flex justify-between">
+                        <p class="text-preset-5-bold text-ds-grey-500">{{ pot.total / pot.target * 100 | number: "1.0-2" }}%</p>
+                        <p class="text-preset-5 text-ds-grey-500">Target of {{ pot.target | currency }}</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4">
+                    <button class="bg-ds-beige-100 text-preset-4-bold rounded-lg flex justify-center items-center py-4 px-[70px] grow border border-transparent hover:bg-white hover:border hover:border-ds-beige-500">
+                        + Add Money
+                    </button>
+                    <button class="bg-ds-beige-100 text-preset-4-bold rounded-lg flex justify-center items-center py-4 px-[70px] grow border border-transparent hover:bg-white hover:border hover:border-ds-beige-500">
+                        Withdraw
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</section>

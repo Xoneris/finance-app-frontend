@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
+import * as data from '../../../data.json'
+import { CurrencyPipe, DecimalPipe, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-pots',
   standalone: true,
-  imports: [],
+  imports: [CurrencyPipe, NgStyle, DecimalPipe],
   templateUrl: './pots.component.html',
-  styleUrl: './pots.component.css'
 })
 export class PotsComponent {
-
+  pots: any = (data.pots as any);
 }
