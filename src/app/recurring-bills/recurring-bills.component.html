@@ -1,1 +1,82 @@
-<p>recurring-bills works!</p>
+<section class="flex flex-col gap-8">
+    
+    <h1 class="text-preset-1 text-ds-grey-900">Recurring Bills</h1>
+
+    <div class="flex gap-6">
+
+        <div class="flex w-[calc(33%-12px)] flex-col gap-6">
+
+            <div class="flex flex-col p-6 bg-ds-grey-900 rounded-xl gap-8">
+                <img src="/images/icon-recurring-bills.svg" alt="icon-recurring-bills" class="w-10 h-10" />
+                <div class="flex flex-col gap-3">
+                    <p class="text-preset-4 text-white">Total Bills</p>
+                    <p class="text-preset-1 text-white">$384.98</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col p-5 bg-white rounded-xl gap-5">
+                <h2 class="text-preset-3 text-ds-grey-900">Summary</h2>
+                <div class="flex flex-col gap-4">
+                    <div class="flex justify-between">
+                        <p class="text-preset-5 text-ds-grey-500">Paid Bills</p>
+                        <p class="text-preset-5-bold text-ds-grey-900">4 ($190.00)</p>
+                    </div>
+                    <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                    <div class="flex justify-between">
+                        <p class="text-preset-5 text-ds-grey-500">Total Upcoming</p>
+                        <p class="text-preset-5-bold text-ds-grey-900">4 ($194.98)</p>
+                    </div>
+                    <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                    <div class="flex justify-between">
+                        <p class="text-preset-5 text-ds-red">Due Soon</p>
+                        <p class="text-preset-5-bold text-ds-red">2 ($59.98)</p>
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        <div class="flex flex-col w-[calc(66%-12px)] bg-white p-8 gap-6 rounded-xl">
+
+            <div class="flex justify-between">
+                <input type="search" class="rounded-lg border w-1/2 border-ds-beige-500 py-3 px-5" placeholder="Search bills" />
+                <div class="flex gap-2 items-center">
+                    <p class="text-preset-4 text-ds-grey-500">Sort by</p>
+                    <select class="rounded-lg border border-ds-beige-500 py-3 px-5">
+                        <option>Latest</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex justify-between py-3 px-4">
+                <div class="flex gap-4 items-center w-3/5">
+                    <p class="text-preset-5 text-ds-grey-500">Bill Title</p>
+                </div>
+                <div class="flex justify-between items-center grow">
+                    <p class="text-preset-5 text-ds-grey-500">Due Date</p>
+                    <p class="text-preset-5 text-ds-grey-500">Amount</p>
+                </div>
+                
+                
+            </div>
+
+            @for (bill of recurringBills; track bill.name; ) {
+                <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                <div class="flex items-center px-4">
+                    <div class="flex gap-4 items-center w-3/5">
+                        <img src="{{ bill.avatar }}" alt="{{ bill.name }}" class="w-8 h-8 rounded-full" />
+                        <p class="text-preset-4-bold text-ds-grey-900">{{ bill.name }}</p>
+                    </div>
+                    <div class="flex justify-between items-center grow">
+                        <p class="text-preset-5">{{ bill.date | date }}</p>
+                        <p class="text-preset-4-bold">{{ bill.amount - (bill.amount * 2) | currency }}</p>
+                    </div>
+                    
+                </div>
+                
+            }
+
+        </div>
+    </div>
+</section>
