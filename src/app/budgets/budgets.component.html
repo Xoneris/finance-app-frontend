@@ -2,7 +2,9 @@
     
     <div class="flex justify-between w-full">
         <h1 class="text-preset-1 text-ds-grey-900">Budgets</h1>
-        <button class="bg-ds-grey-900 rounded-lg text-preset-4-bold text-white p-4">+ Add New Budget</button>
+        <button class="bg-ds-grey-900 rounded-lg text-preset-4-bold text-white p-4 hover:bg-ds-grey-500">
+            + Add New Budget
+        </button>
     </div>
     
 
@@ -52,9 +54,12 @@
             
                 <div class="flex flex-col gap-5 rounded-xl bg-white p-8">
                     
-                    <div class="flex gap-4 items-center">
-                        <div class="w-4 h-4 rounded-full bg-[{{ budget.theme }}]"></div>
-                        <h2 class="text-preset-2 text-ds-grey-900">{{ budget.category }}</h2>
+                    <div class="flex justify-between items-center">
+                        <div class="flex gap-4 items-center">
+                            <div class="w-4 h-4 rounded-full bg-[{{ budget.theme }}]"></div>
+                            <h2 class="text-preset-2 text-ds-grey-900">{{ budget.category }}</h2>
+                        </div>
+                        <img src="/images/icon-ellipsis.svg" alt="icon-ellipsis" class="hover:cursor-pointer"/>
                     </div>
 
                     <div class="flex flex-col gap-4">
