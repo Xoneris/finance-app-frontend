@@ -2,11 +2,10 @@
     
     <div class="flex justify-between w-full">
         <h1 class="text-preset-1 text-ds-grey-900">Budgets</h1>
-        <button class="bg-ds-grey-900 rounded-lg text-preset-4-bold text-white p-4 hover:bg-ds-grey-500">
+        <button class="bg-ds-grey-900 rounded-lg text-preset-4-bold text-white p-4 hover:bg-ds-grey-500" (click)="openNewBudgetModal()">
             + Add New Budget
         </button>
     </div>
-    
 
     <div class="flex gap-6">
         <div class="w-2/5">
@@ -130,4 +129,6 @@
             }
         </div>
     </div>
+
+    <app-addnewbudgetmodal [(showNewBudgetModal)]="showNewBudgetModal" />
 </section>

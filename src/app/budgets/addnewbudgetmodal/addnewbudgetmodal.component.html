@@ -1,0 +1,42 @@
+<div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-25 flex justify-center items-center z-50" 
+    [ngClass]="showNewBudgetModal() === true ? 'block' : 'hidden'"
+    (click)="closeOnOutsideClick($event)"
+>
+    <div class="w-[560px] h-[490px] bg-white rounded-xl p-8 flex flex-col gap-5">
+        <div class="flex justify-between items-center">
+            <h1 class="text-preset-1 text-ds-grey-900">Add New Budget</h1>
+            <img src="/images/icon-close-modal.svg" alt="icon-close-modal" class="hover:cursor-pointer" (click)="closeNewBudgetModal()" />
+        </div>        
+        <p class="text-preset-4 text-ds-grey-500">
+            Choose a category to set a spending budget. These categories can help you monitor spending.
+        </p>       
+        <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-1">
+                <p class="text-preset-5-bold text-ds-grey-500">Budget Category</p>
+                <select class="w-full py-3 pl-5 border rounded-lg">
+                    <option>Entertainment</option>
+                </select>
+            </div>
+            <div class="flex flex-col gap-1">
+                <p class="text-preset-5-bold text-ds-grey-500">Maximum Spend</p>
+                <input type="text" placeholder="$ e.g. 2000" class="w-full py-3 pl-5 border rounded-lg"/>
+            </div>
+            <div class="flex flex-col gap-1">
+                <p class="text-preset-5-bold text-ds-grey-500">Theme</p>
+                <select class="w-full py-3 pl-5 border rounded-lg">
+                    <option>
+                        Green
+                    </option>
+                </select>
+            </div>
+
+            <button class="w-full bg-ds-grey-900 rounded-lg flex justify-center py-4 text-white hover:bg-ds-grey-500">
+                Add Budget
+            </button>
+        </div>        
+    </div>
+    
+
+
+</div>
+

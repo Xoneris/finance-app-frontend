@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import * as data from '../../../data.json'
 import { CurrencyPipe, DatePipe } from '@angular/common';
+import { AddnewbudgetmodalComponent } from './addnewbudgetmodal/addnewbudgetmodal.component';
 
 @Component({
   selector: 'app-budgets',
   standalone: true,
-  imports: [CurrencyPipe, DatePipe],
+  imports: [CurrencyPipe, DatePipe, AddnewbudgetmodalComponent],
   templateUrl: './budgets.component.html',
   styleUrl: './budgets.component.css'
 })
 export class BudgetsComponent {
   budgets = data.budgets
   transactions = data.transactions
+
+  showNewBudgetModal = false
+  showEditBudgetModal = false
 
   getTotalSpent(budgetCategory:string) {
     const transactionsOfCategory = this.transactions.filter((transaction) => transaction.category === budgetCategory)
@@ -25,5 +29,22 @@ export class BudgetsComponent {
 
   getTransactions(budgetCategory:string) {
     return this.transactions.filter((transaction) => transaction.category === budgetCategory).slice(0,3)
+  }
+
+  openNewBudgetModal() {
+    this.showNewBudgetModal = true
+    console.log("open")
+  }
+
+  closeNewBudgetModal() {
+    this.showNewBudgetModal = false
+  }
+
+  openEditBudgetModal() {
+    this.showEditBudgetModal = true
+  }
+
+  closeEditBudgetModal() {
+    this.showEditBudgetModal = false
   }
 }
