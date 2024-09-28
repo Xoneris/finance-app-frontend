@@ -2,7 +2,7 @@
     
     <div class="flex justify-between w-full">
         <h1 class="text-preset-1 text-ds-grey-900">Budgets</h1>
-        <button class="bg-ds-grey-900 rounded-lg text-preset-4-bold text-white p-4 hover:bg-ds-grey-500" (click)="openNewBudgetModal()">
+        <button class="bg-ds-grey-900 rounded-lg text-preset-4-bold text-white p-4 hover:bg-ds-grey-500 transition-all duration-300" (click)="openNewBudgetModal()">
             + Add New Budget
         </button>
     </div>
@@ -58,7 +58,23 @@
                             <div class="w-4 h-4 rounded-full bg-[{{ budget.theme }}]"></div>
                             <h2 class="text-preset-2 text-ds-grey-900">{{ budget.category }}</h2>
                         </div>
-                        <img src="/images/icon-ellipsis.svg" alt="icon-ellipsis" class="hover:cursor-pointer"/>
+                        <div class="relative">
+                            <img src="/images/icon-ellipsis.svg" alt="icon-ellipsis" class="hover:cursor-pointer" (click)="openBudgetOptions(budget.category)"/>
+
+                            <div class="absolute top-4 right-0 w-[138px] h-[91px] flex flex-col bg-white rounded-lg py-3 px-5 border border-ds-grey-300 gap-3 z-50"
+                                [ngClass]="selectedBudget === budget.category ? 'block' : 'hidden'"
+                            >
+                                <p class="text-preset-4 text-ds-grey-900 hover:cursor-pointer" (click)="openEditBudgetModal(budget.category)">
+                                    Edit Budget
+                                </p>
+                                <hr/>
+                                <p class="text-preset-4 text-ds-red hover:cursor-pointer" (click)="openDeleteBudgetModal(budget.category)">
+                                    Delete Budget
+                                </p>
+                            </div>
+
+                        </div>
+                        
                     </div>
 
                     <div class="flex flex-col gap-4">
@@ -131,4 +147,6 @@
     </div>
 
     <app-addnewbudgetmodal [(showNewBudgetModal)]="showNewBudgetModal" />
+    <app-editbudgetmodal [(showEditBudgetModal)]="showEditBudgetModal" [selectedBudget]="selectedBudget" />
+    <app-deletebudgetmodal [(showDeleteModal)]="showDeleteBudgetModal" [selectedBudget]="selectedBudget" />
 </section>

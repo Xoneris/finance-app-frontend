@@ -1,12 +1,14 @@
 import { Component, signal } from '@angular/core';
 import * as data from '../../../data.json'
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
 import { AddnewbudgetmodalComponent } from './addnewbudgetmodal/addnewbudgetmodal.component';
+import { EditbudgetmodalComponent } from './editbudgetmodal/editbudgetmodal.component';
+import { DeletebudgetmodalComponent } from './deletebudgetmodal/deletebudgetmodal.component';
 
 @Component({
   selector: 'app-budgets',
   standalone: true,
-  imports: [CurrencyPipe, DatePipe, AddnewbudgetmodalComponent],
+  imports: [CurrencyPipe, DatePipe, AddnewbudgetmodalComponent, EditbudgetmodalComponent, DeletebudgetmodalComponent, NgClass],
   templateUrl: './budgets.component.html',
   styleUrl: './budgets.component.css'
 })
@@ -16,6 +18,9 @@ export class BudgetsComponent {
 
   showNewBudgetModal = false
   showEditBudgetModal = false
+  showDeleteBudgetModal = false
+
+  selectedBudget = ''
 
   getTotalSpent(budgetCategory:string) {
     const transactionsOfCategory = this.transactions.filter((transaction) => transaction.category === budgetCategory)
@@ -31,20 +36,27 @@ export class BudgetsComponent {
     return this.transactions.filter((transaction) => transaction.category === budgetCategory).slice(0,3)
   }
 
+  openBudgetOptions(selectedBudget:string) {
+    if (this.selectedBudget === selectedBudget) {
+      this.selectedBudget = ''
+    } else {
+      this.selectedBudget = selectedBudget
+    }
+    
+  }
+
   openNewBudgetModal() {
     this.showNewBudgetModal = true
-    console.log("open")
   }
 
-  closeNewBudgetModal() {
-    this.showNewBudgetModal = false
-  }
-
-  openEditBudgetModal() {
+  openEditBudgetModal(selectedBudget:string) {
     this.showEditBudgetModal = true
+    this.selectedBudget = selectedBudget
   }
 
-  closeEditBudgetModal() {
-    this.showEditBudgetModal = false
+  openDeleteBudgetModal(selectedBudget:string) {
+    this.showDeleteBudgetModal = true
+    this.selectedBudget = selectedBudget
   }
+  
 }

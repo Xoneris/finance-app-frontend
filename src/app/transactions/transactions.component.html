@@ -59,16 +59,16 @@
 
         <div class="flex justify-between pt-6">
             <button 
-                class="flex py-3 px-4 border items-center rounded-lg gap-4 group hover:bg-ds-beige-500"
+                class="flex py-3 px-4 border items-center rounded-lg gap-4 group hover:bg-ds-beige-500 transition-all duration-300"
                 (click)="pageinationBack()"
             >
                 <img src="/images/icon-caret-left.svg" alt="caret-left" />
-                <p class="text-preset-4 text-ds-grey-900 group-hover:text-white">Prev</p>
+                <p class="text-preset-4 text-ds-grey-900 group-hover:text-white transition-all duration-300">Prev</p>
             </button>
             <div class="flex gap-2">
                 <button
                     *ngFor="let page of pages" 
-                    class="rounded-lg w-10 h-10 flex justify-center items-center border "
+                    class="rounded-lg w-10 h-10 flex justify-center items-center border transition-all duration-300"
                     [ngClass]="page * 10 === pageination[0] ? 'text-white bg-ds-grey-900' : 'hover:bg-ds-beige-500 hover:text-white'"
                     (click)="pageinationButton(page*10, page*10+10)"
                 >
@@ -76,11 +76,11 @@
                 </button>
             </div>
             <button 
-                class="flex py-3 px-4 border items-center rounded-lg gap-4 group hover:bg-ds-beige-500"
+                class="flex py-3 px-4 border items-center rounded-lg gap-4 group hover:bg-ds-beige-500 transition-all duration-300"
                 (click)="pageinationNext()"
             >
                 <img src="/images/icon-caret-right.svg" alt="caret-right" />
-                <p class="text-preset-4 text-ds-grey-900 group-hover:text-white">Next</p>
+                <p class="text-preset-4 text-ds-grey-900 group-hover:text-white transition-all duration-300">Next</p>
             </button>
         </div>
 

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import * as data from '../../../data.json'
 import { CurrencyPipe, DatePipe, NgClass, NgFor } from '@angular/common';
-import { signal } from '@angular/core';
 
 @Component({
   selector: 'app-transactions',
