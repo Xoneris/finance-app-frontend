@@ -5,7 +5,11 @@
     <div class="flex flex-col gap-6 rounded-xl bg-white p-8">
 
         <div class="flex w-full justify-between">
-            <input type="search" placeholder="Search transaction" class="border border-ds-beige-500 w-[320px] flex items-center rounded-lg py-3 pl-5"/>
+            <input type="search" placeholder="Search transaction" class="border border-ds-beige-500 w-[320px] flex items-center rounded-lg py-3 pl-5"
+                [value]="searchTerm"
+                (input)="updateSearchTerm($event)"
+                
+            />
             <div class="flex gap-6">
                 <div class="flex gap-2 items-center">
                     <p class="text-preset-4 text-ds-grey-500">Sort by</p>
@@ -33,7 +37,7 @@
             </div>
 
             <div class="flex flex-col gap-4">
-                @for (transaction of transactions.slice(pageination[0],pageination[1]); track transaction.name) {
+                @for (transaction of filteredTransactionsBySearch().slice(pageination[0],pageination[1]); track transaction.name) {
                     <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
                     <div class="flex justify-between items-center px-4">
                         <div class="flex items-center gap-4 w-1/2">
@@ -61,6 +65,7 @@
             <button 
                 class="flex py-3 px-4 border items-center rounded-lg gap-4 group hover:bg-ds-beige-500 transition-all duration-300"
                 (click)="pageinationBack()"
+                [disabled]="pages.length > 1 ? false : true"
             >
                 <img src="/images/icon-caret-left.svg" alt="caret-left" />
                 <p class="text-preset-4 text-ds-grey-900 group-hover:text-white transition-all duration-300">Prev</p>
@@ -78,6 +83,7 @@
             <button 
                 class="flex py-3 px-4 border items-center rounded-lg gap-4 group hover:bg-ds-beige-500 transition-all duration-300"
                 (click)="pageinationNext()"
+                [disabled]="pages.length > 1 ? false : true"
             >
                 <img src="/images/icon-caret-right.svg" alt="caret-right" />
                 <p class="text-preset-4 text-ds-grey-900 group-hover:text-white transition-all duration-300">Next</p>

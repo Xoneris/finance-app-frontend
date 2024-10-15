@@ -12,13 +12,27 @@ import { CurrencyPipe, DatePipe, NgClass, NgFor } from '@angular/common';
 export class TransactionsComponent {
 
   transactions: any = (data.transactions);
+  searchTerm: string = ""
+
   temp = Math.floor(this.transactions.length / 10) + 1 
-  pages: number[] = []
-  constructor() {
-    this.pages = Array(this.temp).fill(0).map((x,i)=>i);
-  }
+  pages: number[] = Array(this.temp).fill(0).map((x,i)=>i);
+
+  // constructor() {
+  //   this.pages = Array(this.temp).fill(0).map((x,i)=>i);
+  // }
 
   pageination: number[] = [0,10]
+
+  filteredTransactionsBySearch() {
+    const filteredTransactions = this.transactions.filter((transaction:any) => transaction.name.toLowerCase().includes(this.searchTerm.toLowerCase()))
+    this.pages = Array(Math.floor(filteredTransactions.length / 10) + 1).fill(0).map((x,i)=>i)
+    return filteredTransactions
+  }
+
+  updateSearchTerm(e:Event) {
+    const searchTarget = e.target as HTMLInputElement
+    this.searchTerm = searchTarget.value
+  }
 
   pageinationButton(start:number, end:number) {
     this.pageination[0] = start;
@@ -38,5 +52,4 @@ export class TransactionsComponent {
       this.pageination[1] = this.pageination[1] + 10
     }
   }
-
 }
