@@ -11,11 +11,10 @@ import { CurrencyPipe, DatePipe, NgClass, NgFor } from '@angular/common';
 })
 export class TransactionsComponent {
 
-  
-
   transactions: transaction[] = (data.transactions);
   searchTerm: string = ""
   sortBy: string = ""
+  category: string = ""
 
   temp = Math.floor(this.transactions.length / 10) + 1 
   pages: number[] = Array(this.temp).fill(0).map((x,i)=>i);
@@ -23,37 +22,79 @@ export class TransactionsComponent {
   pageination: number[] = [0,10]
 
   filteredTransactions() {
-
     let filteredTransactions = this.transactions
 
-    // switch(this.sortBy) {
-    //   case "latest":
-    //     filteredTransactions = filteredTransactions.sort(function(a:any,b:any){
-    //       if (a.name < b.name){
-    //         return -1 
-    //       } else if (a.name > b.name){
-    //         return 1
-    //       }
-    //       return 0
-    //     })
-    //     break
-    //   case "oldest":
-    //     filteredTransactions = filteredTransactions.filter((transaction:any) => )
-    //     break
-    //   case "a-to-z":
-    //     filteredTransactions = filteredTransactions.filter((transaction:any) => )
-    //     break
-    //   case "z-to-a":
-    //     filteredTransactions = filteredTransactions.filter((transaction:any) => )
-    //     break
-    //   case "highest":
-    //     filteredTransactions = filteredTransactions.filter((transaction:any) => )
-    //     break
-    //   case "lowest":
-    // }
+    switch(this.sortBy) {
+      case "latest":
+        filteredTransactions = filteredTransactions.sort(function(a:transaction,b:transaction){
+          if (a.date > b.date){
+            return -1 
+          } else if (a.date < b.date){
+            return 1
+          }
+          return 0
+        })
+        break
+      case "oldest":
+        filteredTransactions = filteredTransactions.sort(function(a:transaction,b:transaction){
+          if (a.date < b.date){
+            return -1 
+          } else if (a.date > b.date){
+            return 1
+          }
+          return 0
+        })
+        break
+      case "a-to-z":
+        filteredTransactions = filteredTransactions.sort(function(a:transaction,b:transaction){
+          if (a.name < b.name){
+            return -1 
+          } else if (a.name > b.name){
+            return 1
+          }
+          return 0
+        })
+        break
+      case "z-to-a":
+        filteredTransactions = filteredTransactions.sort(function(a:transaction,b:transaction){
+          if (a.name > b.name){
+            return -1 
+          } else if (a.name < b.name){
+            return 1
+          }
+          return 0
+        })
+        break
+      case "highest":
+        filteredTransactions = filteredTransactions.sort(function(a:transaction,b:transaction){
+          if (a.amount < b.amount){
+            return -1 
+          } else if (a.amount > b.amount){
+            return 1
+          }
+          return 0
+        })
+        break
+      case "lowest":
+        filteredTransactions = filteredTransactions.sort(function(a:transaction,b:transaction){
+          if (a.amount > b.amount){
+            return -1 
+          } else if (a.amount < b.amount){
+            return 1
+          }
+          return 0
+        })
+        break
+      default:
+        break
+    }
+
+    if (this.category !== "") {
+      filteredTransactions = filteredTransactions.filter((transaction:transaction) => transaction.category === this.category)
+    }
 
     if (this.searchTerm !== "") {
-      filteredTransactions = this.transactions.filter((transaction:any) => transaction.name.toLowerCase().includes(this.searchTerm.toLowerCase()))
+      filteredTransactions = filteredTransactions.filter((transaction:transaction) => transaction.name.toLowerCase().includes(this.searchTerm.toLowerCase()))
     }
     this.pages = Array(Math.floor(filteredTransactions.length / 10) + 1).fill(0).map((x,i)=>i)
     return filteredTransactions
@@ -62,6 +103,11 @@ export class TransactionsComponent {
   updateSortBy(e:Event) {
     const sortTarget = e.target as HTMLInputElement
     this.sortBy = sortTarget.value
+  }
+
+  updateCategory(e:Event) {
+    const categoryTarget = e.target as HTMLInputElement
+    this.category = categoryTarget.value
   }
 
   updateSearchTerm(e:Event) {

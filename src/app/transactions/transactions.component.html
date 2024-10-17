@@ -14,7 +14,7 @@
                 <div class="flex gap-2 items-center">
                     <p class="text-preset-4 text-ds-grey-500">Sort by</p>
                     <select class="border rounded-lg py-3 px-5 border-ds-beige-500"
-                        (click)="updateSortBy($event)"
+                        (change)="updateSortBy($event)"
                     >
                         <option value="latest">Latest</option>
                         <option value="oldest">Oldest</option>
@@ -23,12 +23,23 @@
                         <option value="highest">Highest</option>
                         <option value="lowest">Lowest</option>
                     </select>
-                    <!-- {{ sortBy }} -->
                 </div>
                 <div class="flex gap-2 items-center">
                     <p class="text-preset-4 text-ds-grey-500">Category</p>
-                    <select class="border rounded-lg py-3 px-5 border-ds-beige-500">
-                        <option>All Transactions</option>
+                    <select class="border rounded-lg py-3 px-5 border-ds-beige-500"
+                        (change)="updateCategory($event)"
+                    >
+                        <option value="">All Transactions</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Bills">Bills</option>
+                        <option value="Groceries">Groceries</option>
+                        <option value="Dining Out">Dining Out</option>
+                        <option value="Transportation">Transportation</option>
+                        <option value="Personal Care">Personal Care</option>
+                        <option value="Education">Education</option>
+                        <option value="Lifestyle">Lifestyle</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="General">General</option>
                     </select>
                 </div>
             </div>
@@ -50,7 +61,7 @@
                     <div class="flex justify-between items-center px-4">
                         <div class="flex items-center gap-4 w-1/2">
                             <img src="{{ transaction.avatar }}" alt="{{ transaction.name }}" class="rounded-full w-10 h-10"/>
-                            <p class="text-preset-4-bold text-ds-grey-900">{{ transaction.name }}n</p>
+                            <p class="text-preset-4-bold text-ds-grey-900">{{ transaction.name }}</p>
                         </div>
                         
                         <div class="w-1/4 flex">
