@@ -4,7 +4,7 @@
 
     <div class="flex flex-col gap-6 rounded-xl bg-white p-8">
 
-        <div class="flex w-full justify-between">
+        <div class="flex w-full justify-between gap-4">
             <input type="search" placeholder="Search transaction" class="border border-ds-beige-500 w-full max-w-[320px] flex items-center rounded-lg py-3 pl-5"
                 [value]="searchTerm"
                 (input)="updateSearchTerm($event)"
@@ -12,8 +12,8 @@
             />
             <div class="flex gap-6">
                 <div class="flex gap-2 items-center">
-                    <p class="text-preset-4 text-ds-grey-500">Sort by</p>
-                    <select class="border rounded-lg py-3 px-5 border-ds-beige-500"
+                    <p class="hidden md:block text-preset-4 text-ds-grey-500">Sort by</p>
+                    <select class="hidden md:block border rounded-lg py-3 px-5 border-ds-beige-500"
                         (change)="updateSortBy($event)"
                     >
                         <option value="latest">Latest</option>
@@ -23,10 +23,11 @@
                         <option value="highest">Highest</option>
                         <option value="lowest">Lowest</option>
                     </select>
+                    <img src="/images/icon-sort-mobile.svg" alt="icon-sort-mobile" class="block md:hidden min-w-4 min-h-4"/>
                 </div>
                 <div class="flex gap-2 items-center">
-                    <p class="text-preset-4 text-ds-grey-500">Category</p>
-                    <select class="border rounded-lg py-3 px-5 border-ds-beige-500"
+                    <p class="hidden md:block text-preset-4 text-ds-grey-500">Category</p>
+                    <select class="hidden md:block border rounded-lg py-3 px-5 border-ds-beige-500"
                         (change)="updateCategory($event)"
                     >
                         <option value="">All Transactions</option>
@@ -41,6 +42,7 @@
                         <option value="Shopping">Shopping</option>
                         <option value="General">General</option>
                     </select>
+                    <img src="/images/icon-filter-mobile.svg" alt="icon-filter-mobile" class="block md:hidden min-w-4 min-h-4"/>
                 </div>
             </div>
         </div>
@@ -78,28 +80,28 @@
                         </p>
                     </div>
 
-                    <div class="md:hidden flex justify-between items-center px-4">
-                        <div class="flex w-full gap-[6px]">
+                    <div class="md:hidden flex justify-between items-center">
+                        <div class="flex w-3/4 gap-[6px] items-center">
                             <img src="{{ transaction.avatar }}" alt="{{ transaction.name }}" class="rounded-full w-8 h-8"/>
                             <div class="flex flex-col">
                                 <p class="text-preset-4-bold text-ds-grey-900">{{ transaction.name }}</p>
                                 <p class="text-preset-5 text-ds-grey-500 w-1/2">{{ transaction.category }}</p>
                             </div>
                         </div>
-                        <div class="flex flex-col w-full ">
-                            <p class="text-preset-4-bold text-ds-grey-500 w-1/2"
+                        <div class="flex flex-col w-1/4  items-end">
+                            <p class="text-preset-4-bold"
                                 [ngClass]="transaction.amount > 0 ? 'text-ds-green' : 'text-ds-grey-900'"
                             >
                                 {{ transaction.amount | currency }}
                             </p>
-                            <p class="text-preset-5 text-ds-grey-500 w-1/2">{{ transaction.date | date }}</p>
+                            <p class="text-preset-5 text-ds-grey-500">{{ transaction.date | date }}</p>
                         </div>
                     </div>
                 } 
             </div>
         </div>
 
-        <div class="flex justify-between pt-6">
+        <div class="flex justify-between pt-6 gap-3">
             <button 
                 class="flex py-3 px-4 border items-center rounded-lg gap-4 transition-all duration-300"
                 (click)="pageinationBack()"
@@ -107,7 +109,7 @@
                 [ngClass]="pages.length > 1 ? 'group hover:bg-ds-beige-500' : null"
             >
                 <img src="/images/icon-caret-left.svg" alt="caret-left" />
-                <p class="text-preset-4 text-ds-grey-900 group-hover:text-white transition-all duration-300">Prev</p>
+                <p class="hidden md:block text-preset-4 text-ds-grey-900 group-hover:text-white transition-all duration-300">Prev</p>
             </button>
             <div class="flex gap-2">
                 <button
@@ -125,8 +127,8 @@
                 [disabled]="pages.length > 1 ? false : true"
                 [ngClass]="pages.length > 1 ? 'group hover:bg-ds-beige-500' : null"
             >
-                <img src="/images/icon-caret-right.svg" alt="caret-right" />
-                <p class="text-preset-4 text-ds-grey-900 group-hover:text-white transition-all duration-300">Next</p>
+                <img src="/images/icon-caret-right.svg" alt="caret-right"/>
+                <p class="hidden md:block text-preset-4 text-ds-grey-900 group-hover:text-white transition-all duration-300">Next</p>
             </button>
         </div>
 
