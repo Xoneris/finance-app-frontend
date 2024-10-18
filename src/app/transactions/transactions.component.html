@@ -5,7 +5,7 @@
     <div class="flex flex-col gap-6 rounded-xl bg-white p-8">
 
         <div class="flex w-full justify-between">
-            <input type="search" placeholder="Search transaction" class="border border-ds-beige-500 w-[320px] flex items-center rounded-lg py-3 pl-5"
+            <input type="search" placeholder="Search transaction" class="border border-ds-beige-500 w-full max-w-[320px] flex items-center rounded-lg py-3 pl-5"
                 [value]="searchTerm"
                 (input)="updateSearchTerm($event)"
                 
@@ -46,7 +46,7 @@
         </div>
 
         <div>
-            <div class="flex justify-between py-3 px-4 gap-8">
+            <div class="hidden lg:flex justify-between py-3 px-4 gap-8">
                 <p class="text-preset-5 text-ds-grey-500 w-1/2">Recipient / Sender</p>
                 <div class="flex w-1/4">
                     <p class="text-preset-5 text-ds-grey-500 w-1/2">Category</p>
@@ -58,7 +58,9 @@
             <div class="flex flex-col gap-4">
                 @for (transaction of filteredTransactions().slice(pageination[0],pageination[1]); track transaction.name) {
                     <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
-                    <div class="flex justify-between items-center px-4">
+
+                    
+                    <div class="hidden md:flex justify-between items-center px-4">
                         <div class="flex items-center gap-4 w-1/2">
                             <img src="{{ transaction.avatar }}" alt="{{ transaction.name }}" class="rounded-full w-10 h-10"/>
                             <p class="text-preset-4-bold text-ds-grey-900">{{ transaction.name }}</p>
@@ -69,12 +71,29 @@
                             <p class="text-preset-5 text-ds-grey-500 w-1/2">{{ transaction.date | date }}</p>
                         </div>
                         
-                        <p 
-                            class="text-preset-4-bold w-1/4 flex justify-end"
+                        <p class="text-preset-4-bold w-1/4 flex justify-end"
                             [ngClass]="transaction.amount > 0 ? 'text-ds-green' : 'text-ds-grey-900'"
                         >
                             {{ transaction.amount | currency }}
                         </p>
+                    </div>
+
+                    <div class="md:hidden flex justify-between items-center px-4">
+                        <div class="flex w-full gap-[6px]">
+                            <img src="{{ transaction.avatar }}" alt="{{ transaction.name }}" class="rounded-full w-8 h-8"/>
+                            <div class="flex flex-col">
+                                <p class="text-preset-4-bold text-ds-grey-900">{{ transaction.name }}</p>
+                                <p class="text-preset-5 text-ds-grey-500 w-1/2">{{ transaction.category }}</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col w-full ">
+                            <p class="text-preset-4-bold text-ds-grey-500 w-1/2"
+                                [ngClass]="transaction.amount > 0 ? 'text-ds-green' : 'text-ds-grey-900'"
+                            >
+                                {{ transaction.amount | currency }}
+                            </p>
+                            <p class="text-preset-5 text-ds-grey-500 w-1/2">{{ transaction.date | date }}</p>
+                        </div>
                     </div>
                 } 
             </div>

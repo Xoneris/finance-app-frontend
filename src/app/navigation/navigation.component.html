@@ -1,9 +1,9 @@
 <nav 
-    class="md:h-full md:relative flex md:flex-col w-screen h-[74px] fixed bottom-0 bg-ds-grey-900 flex-row rounded-t-lg md:rounded-r-[12px] md:rounded-tl-none md:gap-6 z-50"
-    [ngClass]="isMinimised == true ? 'md:w-[300px]' : 'md:w-[88px]'"
+    class="lg:h-full lg:relative flex lg:flex-col w-[calc(100vw-(100vw-100%))] h-[52px] md:h-[74px] fixed bottom-0 bg-ds-grey-900 flex-row rounded-t-lg lg:rounded-r-[12px] lg:rounded-tl-none lg:gap-6 z-50"
+    [ngClass]="isMinimised == true ? 'lg:w-[300px]' : 'lg:w-[88px]'"
 >
 
-    <div class="w-full my-10 ml-8 hidden md:flex">
+    <div class="w-full my-10 ml-8 hidden lg:flex">
         @if (isMinimised === false) {
             <img src="/images/logo-small.svg" alt="Logo"/>
         } @else if(isMinimised === true) {
@@ -11,51 +11,51 @@
         }
     </div>
 
-    <div class="flex gap-0 md:flex-col grow w-full max-h-[750px] justify-around md:justify-start items-end md:items-start">
-        <a routerLink="/" [ngClass]="isMinimised === true ? 'md:pr-6' : 'md:pr-2'">
+    <div class="flex gap-0 lg:flex-col grow w-full max-h-[750px] justify-around lg:justify-start items-end lg:items-start">
+        <a routerLink="/" [ngClass]="isMinimised === true ? 'lg:pr-6' : 'lg:pr-2'">
             <app-nav-element>
                 <img src="/images/icon-nav-overview.svg" alt="icon-overview" />
                 @if (isMinimised === true) {
-                    <span>Overview</span>
+                    <span class="hidden md:block">Overview</span>
                 }
             </app-nav-element>
         </a>
-        <a routerLink="/transactions" [ngClass]="isMinimised === true ? 'md:pr-6' : 'md:pr-2'">
+        <a routerLink="/transactions" [ngClass]="isMinimised === true ? 'lg:pr-6' : 'lg:pr-2'">
             <app-nav-element>
                 <img src="/images/icon-nav-transactions.svg" alt="icon-transactions" />
                 @if (isMinimised === true) {
-                    <span>Transactions</span>
+                    <span  class="hidden md:block">Transactions</span>
                 }
             </app-nav-element>
         </a>
-        <a routerLink="/budgets" [ngClass]="isMinimised === true ? 'md:pr-6' : 'md:pr-2'">
+        <a routerLink="/budgets" [ngClass]="isMinimised === true ? 'lg:pr-6' : 'lg:pr-2'">
             <app-nav-element>
                 <img src="/images/icon-nav-budgets.svg" alt="icon-budgets" />
                 @if (isMinimised === true) {
-                    <span>Budgets</span>
+                    <span  class="hidden md:block">Budgets</span>
                 }
             </app-nav-element>
         </a>
-        <a routerLink="/pots" [ngClass]="isMinimised === true ? 'md:pr-6' : 'md:pr-2'">
+        <a routerLink="/pots" [ngClass]="isMinimised === true ? 'lg:pr-6' : 'lg:pr-2'">
             <app-nav-element>
                 <img src="/images/icon-nav-pots.svg" alt="icon-pots" />
                 @if (isMinimised === true) {
-                    <span>Pots</span>
+                    <span  class="hidden md:block">Pots</span>
                 }
             </app-nav-element>
         </a>
-        <a routerLink="/recurring-bills" [ngClass]="isMinimised === true ? 'md:pr-6' : 'md:pr-2'">
+        <a routerLink="/recurring-bills" [ngClass]="isMinimised === true ? 'lg:pr-6' : 'lg:pr-2'">
             <app-nav-element>
                 <img src="/images/icon-nav-recurring-bills.svg" alt="icon-recurring-bills" />
                 @if (isMinimised === true) {
-                    <span>Recurring Bills</span>
+                    <span  class="hidden md:block">Recurring Bills</span>
                 }
             </app-nav-element>
         </a>
     </div>
 
     <div 
-        class="hidden md:flex items-center pt-4 pl-8 mb-[58px] gap-4 text-ds-grey-300 hover:text-ds-grey-100 hover:cursor-pointer transition-all duration-300"
+        class="hidden lg:flex items-center pt-4 pl-8 mb-[58px] gap-4 text-ds-grey-300 hover:text-ds-grey-100 hover:cursor-pointer transition-all duration-300"
         (click)="toggleMinimised()"
     >
         @if (isMinimised === true) {
