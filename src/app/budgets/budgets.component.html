@@ -7,50 +7,46 @@
         </button>
     </div>
 
-    <div class="flex gap-6">
-        <div class="w-2/5">
+    <div class="flex flex-col lg:flex-row gap-6">
+        <div class="w-full lg:w-2/5">
 
-            <div class="bg-white rounded-xl  p-8 flex flex-col gap-8">
+            <div class="bg-white rounded-xl p-8 flex flex-col md:flex-row lg:flex-col justify-center gap-8">
 
-            
-            <div class="flex justify-center items-center">
-                <div class="w-[240px] h-[240px] rounded-full relative" style="background: conic-gradient(#277C78 5%, #82C9D7 5% 82%,#F2CDAC 82% 89%,#626070 89% 100%);" >
-                    <div class="absolute w-[187px] h-[187px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 opacity-25 bg-white">
-    
-                    </div>
-                    <div class="absolute w-40 h-40 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center bg-white rounded-full z-20">
-                        <p class="text-preset-1 text-ds-grey-900">$338</p>
-                        <p class="text-preset-5 text-ds-grey-500">of $975 limit</p>
+                <div class="flex justify-center items-center w-full md:w-1/2 lg:w-full">
+                    <div class="w-[240px] h-[240px] rounded-full relative" style="background: conic-gradient(#277C78 5%, #82C9D7 5% 82%,#F2CDAC 82% 89%,#626070 89% 100%);" >
+                        <div class="absolute w-[187px] h-[187px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 opacity-25 bg-white"></div>
+                        <div class="absolute w-40 h-40 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center bg-white rounded-full z-20">
+                            <p class="text-preset-1 text-ds-grey-900">$338</p>
+                            <p class="text-preset-5 text-ds-grey-500">of $975 limit</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="flex flex-col gap-6">
-                <h2 class="text-preset-2 text-ds-grey-900">Spending Summary</h2>
-                    @for (budget of budgets ; track budget.category ; let first = $first) {
-                        @if (first !== true) {
-                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                <div class="flex flex-col gap-6 w-full md:w-1/2 lg:w-full">
+                    <h2 class="text-preset-2 text-ds-grey-900">Spending Summary</h2>
+                        @for (budget of budgets ; track budget.category ; let first = $first) {
+                            @if (first !== true) {
+                                <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            }
+                            <div class="flex justify-between gap-4">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-1 h-full rounded-lg bg-[{{ budget.theme }}]"></div>
+                                    <p class="text-preset-4 text-ds-grey-500">{{ budget.category }}</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <p class="text-preset-3 text-ds-grey-900">{{ getTotalSpent(budget.category) | currency }}</p>
+                                    <p class="text-preset-5 text-ds-grey-500">of {{ budget.maximum | currency }}</p>
+                                </div>
+                            </div>
                         }
-                        <div class="flex justify-between gap-4">
-                            <div class="flex items-center gap-4">
-                                <div class="w-1 h-full rounded-lg bg-[{{ budget.theme }}]"></div>
-                                <p class="text-preset-4 text-ds-grey-500">{{ budget.category }}</p>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <p class="text-preset-3 text-ds-grey-900">{{ getTotalSpent(budget.category) | currency }}</p>
-                                <p class="text-preset-5 text-ds-grey-500">of {{ budget.maximum | currency }}</p>
-                            </div>
-                        </div>
-                    }
-            </div>
+                </div>
             </div>
         </div>
         
-        <div class="w-3/5 flex flex-col gap-6">
+        <div class="w-full lg:w-3/5 flex flex-col gap-6">
             
             @for (budget of budgets ; track budget.category ) {
 
-            
                 <div class="flex flex-col gap-5 rounded-xl bg-white p-8">
                     
                     <div class="flex justify-between items-center">
