@@ -8,7 +8,7 @@
             </a>
         </div>
     </div>
-    <div class="flex flex-col md:flex-row gap-4 md:gap-0">
+    <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-0 lg:gap-4">
         <div class="grow flex justify-center items-center">
             <div class="w-[240px] h-[240px] rounded-full relative" style="background: conic-gradient(#277C78 5%, #82C9D7 5% 82%,#F2CDAC 82% 89%,#626070 89% 100%);" >
                 <div class="absolute w-[187px] h-[187px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 opacity-25 bg-white"></div>
@@ -18,8 +18,8 @@
                 </div>
             </div>
         </div>
-        <div class="flex flex-wrap w-full md:flex-col gap-4 md:py-[41px] ">
-            <div *ngFor="let budget of budgets.slice(0,4)" class="flex grow-0 md:grow gap-4 w-[calc(50%-8px)]">
+        <div class="flex flex-wrap md:flex-col gap-4 md:py-[41px]">
+            <div *ngFor="let budget of budgets.slice(0,4)" class="flex grow-0 md:grow gap-4 w-[calc(50%-8px)] md:w-full">
                 <div class="w-1 h-full rounded-lg bg-[{{ budget.theme }}]"></div>
                 <div class="flex flex-col gap-1">
                     <p class="text-preset-5 text-ds-grey-500">{{ budget.category }}</p>
