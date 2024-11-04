@@ -12,7 +12,7 @@
     </div>
 
     <div class="flex gap-0 lg:flex-col grow w-full max-h-[750px] justify-around lg:justify-start items-end lg:items-start">
-        <a routerLink="/" [ngClass]="isMinimised === true ? 'lg:pr-6' : 'lg:pr-2'">
+        <a routerLink="/" [ngClass]="isMinimised === true ? 'lg:pr-6' : 'lg:pr-2'" class="w-full">
             <app-nav-element>
                 <img src="/images/icon-nav-overview.svg" alt="icon-overview" />
                 @if (isMinimised === true) {
@@ -20,7 +20,7 @@
                 }
             </app-nav-element>
         </a>
-        <a routerLink="/transactions" [ngClass]="isMinimised === true ? 'lg:pr-6' : 'lg:pr-2'">
+        <a routerLink="/transactions" [ngClass]="isMinimised === true ? 'lg:pr-6' : 'lg:pr-2'" class="w-full">
             <app-nav-element>
                 <img src="/images/icon-nav-transactions.svg" alt="icon-transactions" />
                 @if (isMinimised === true) {
@@ -28,7 +28,7 @@
                 }
             </app-nav-element>
         </a>
-        <a routerLink="/budgets" [ngClass]="isMinimised === true ? 'lg:pr-6' : 'lg:pr-2'">
+        <a routerLink="/budgets" [ngClass]="isMinimised === true ? 'lg:pr-6' : 'lg:pr-2'" class="w-full">
             <app-nav-element>
                 <img src="/images/icon-nav-budgets.svg" alt="icon-budgets" />
                 @if (isMinimised === true) {
@@ -36,7 +36,7 @@
                 }
             </app-nav-element>
         </a>
-        <a routerLink="/pots" [ngClass]="isMinimised === true ? 'lg:pr-6' : 'lg:pr-2'">
+        <a routerLink="/pots" [ngClass]="isMinimised === true ? 'lg:pr-6' : 'lg:pr-2'" class="w-full">
             <app-nav-element>
                 <img src="/images/icon-nav-pots.svg" alt="icon-pots" />
                 @if (isMinimised === true) {
@@ -44,7 +44,7 @@
                 }
             </app-nav-element>
         </a>
-        <a routerLink="/recurring-bills" [ngClass]="isMinimised === true ? 'lg:pr-6' : 'lg:pr-2'">
+        <a routerLink="/recurring-bills" [ngClass]="isMinimised === true ? 'lg:pr-6' : 'lg:pr-2'" class="w-full">
             <app-nav-element>
                 <img src="/images/icon-nav-recurring-bills.svg" alt="icon-recurring-bills" />
                 @if (isMinimised === true) {

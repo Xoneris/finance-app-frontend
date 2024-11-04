@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import * as data from '../../../data.json'
 import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
 import { AddnewbudgetmodalComponent } from './addnewbudgetmodal/addnewbudgetmodal.component';
@@ -42,7 +42,6 @@ export class BudgetsComponent {
     } else {
       this.selectedBudget = selectedBudget
     }
-    
   }
 
   openNewBudgetModal() {
@@ -58,5 +57,4 @@ export class BudgetsComponent {
     this.showDeleteBudgetModal = true
     this.selectedBudget = selectedBudget
   }
-  
 }
