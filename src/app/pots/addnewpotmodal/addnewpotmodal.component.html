@@ -1,0 +1,37 @@
+<div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-25 flex justify-center items-center z-50" 
+    [ngClass]="showNewPotModal() === true ? 'block' : 'hidden'"
+    (click)="closeOnOutsideClick($event)"
+>
+    <div class="w-[560px] h-[490px] bg-white rounded-xl p-8 flex flex-col gap-5 transition-all">
+        <div class="flex justify-between items-center">
+            <h1 class="text-preset-1 text-ds-grey-900">Add New Pot</h1>
+            <img src="/images/icon-close-modal.svg" alt="icon-close-modal" class="hover:cursor-pointer" (click)="closeNewPotModal()" />
+        </div>        
+        <p class="text-preset-4 text-ds-grey-500">
+            Create a pot to set savings targets. These can help keep you on track as you save for special purchases.
+        </p>       
+        <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-1">
+                <p class="text-preset-5-bold text-ds-grey-500">Pot Name</p>
+                <input type="text" placeholder="e.g. Rainy Days" class="w-full py-3 pl-5 border rounded-lg"/>
+            </div>
+            <div class="flex flex-col gap-1">
+                <p class="text-preset-5-bold text-ds-grey-500">Target</p>
+                <input type="text" placeholder="$ e.g. 2000" class="w-full py-3 pl-5 border rounded-lg"/>
+            </div>
+            <div class="flex flex-col gap-1">
+                <p class="text-preset-5-bold text-ds-grey-500">Theme</p>
+                <select class="w-full py-3 pl-5 border rounded-lg">
+                    <option>
+                        Green
+                    </option>
+                </select>
+            </div>
+
+            <button class="w-full bg-ds-grey-900 rounded-lg flex justify-center py-4 text-white hover:bg-ds-grey-500 transition-all duration-300">
+                Add Pot
+            </button>
+        </div>        
+    </div>
+    
+</div>

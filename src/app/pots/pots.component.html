@@ -2,13 +2,13 @@
     <div class="flex justify-between">
         <h1 class="text-preset-1">Pots</h1>
 
-        <button class="bg-ds-grey-900 text-preset-4-bold text-white p-4 rounded-lg hover:bg-ds-grey-500 transition-all duration-300">
+        <button class="bg-ds-grey-900 text-preset-4-bold text-white p-4 rounded-lg hover:bg-ds-grey-500 transition-all duration-300" (click)="openNewPotModal()">
             + Add New Pot
         </button>
     </div>
 
     <div class="flex flex-col lg:flex-row flex-wrap gap-6">
-        @for (pot of pots; track pots.name; ) {
+        @for (pot of pots; track pot.name; ) {
             <div class="flex flex-col flex-wrap w-full lg:w-[calc(50%-12px)] rounded-xl bg-white p-6 gap-8">
                 <div class="flex justify-between items-center">
                     <div class="flex gap-4 items-center">
@@ -17,16 +17,16 @@
                     </div>
 
                     <div class="relative">
-                        <img src="/images/icon-ellipsis.svg" alt="icon-ellipsis" class="hover:cursor-pointer" (click)="openPotOptions(pot.name)"/>
+                        <img src="/images/icon-ellipsis.svg" alt="icon-ellipsis" class="hover:cursor-pointer" (click)="openPotOptions(pot)"/>
 
                         <div class="absolute top-4 right-0 w-[138px] h-[91px] flex flex-col bg-white rounded-lg py-3 px-5 border border-ds-grey-300 gap-3 z-50"
-                            [ngClass]="selectedPot === pot.name ? 'block' : 'hidden'"
+                            [ngClass]="selectedPot.name === pot.name ? 'block' : 'hidden'"
                         >
-                            <p class="text-preset-4 text-ds-grey-900 hover:cursor-pointer" (click)="openEditPotModal(pot.name)">
+                            <p class="text-preset-4 text-ds-grey-900 hover:cursor-pointer" (click)="openEditPotModal(pot)">
                                 Edit Pot
                             </p>
                             <hr/>
-                            <p class="text-preset-4 text-ds-red hover:cursor-pointer" (click)="openDeletePotModal(pot.name)">
+                            <p class="text-preset-4 text-ds-red hover:cursor-pointer" (click)="openDeletePotModal(pot)">
                                 Delete Pot
                             </p>
                         </div>
@@ -50,14 +50,25 @@
                 </div>
 
                 <div class="flex gap-4">
-                    <button class="bg-ds-beige-100 text-preset-4-bold rounded-lg flex justify-center items-center py-4 w-full grow border border-transparent hover:bg-white hover:border hover:border-ds-beige-500 transition-all duration-500">
+                    <button class="bg-ds-beige-100 text-preset-4-bold rounded-lg flex justify-center items-center py-4 w-full grow border border-transparent hover:bg-white hover:border hover:border-ds-beige-500 transition-all duration-500"
+                        (click)="openAddToPotModal(pot)"
+                    >
                         + Add Money
                     </button>
-                    <button class="bg-ds-beige-100 text-preset-4-bold rounded-lg flex justify-center items-center py-4 w-full grow border border-transparent hover:bg-white hover:border hover:border-ds-beige-500 transition-all duration-500">
+                    <button class="bg-ds-beige-100 text-preset-4-bold rounded-lg flex justify-center items-center py-4 w-full grow border border-transparent hover:bg-white hover:border hover:border-ds-beige-500 transition-all duration-500"
+                        (click)="openWithdrawFromPotModal(pot)"
+                    >
                         Withdraw
                     </button>
                 </div>
             </div>
         }
     </div>
+
+    <app-addnewpotmodal [(showNewPotModal)]="showNewPotModal" />
+    <app-editpotmodal [(showEditPotModal)]="showEditPotModal" [selectedPot]="selectedPot" />
+    <app-deletepotmodal [(showDeletePotModal)]="showDeletePotModal" [selectedPot]="selectedPot" />
+    <app-withdrawfrompotmodal [(showWithdrawFromPotModal)]="showWithdrawFromPotModal" [selectedPot]="selectedPot" />
+    <app-addtopotmodal [(showAddToPotModal)]="showAddToPotModal" [selectedPot]="selectedPot" />
+
 </section>

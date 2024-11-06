@@ -1,0 +1,39 @@
+<div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-25 flex justify-center items-center z-50" 
+    [ngClass]="showAddToPotModal() === true ? 'block' : 'hidden'"
+    (click)="closeOnOutsideClick($event)"
+>
+    <div class="w-[560px]  bg-white rounded-xl p-8 flex flex-col gap-5">
+        <div class="flex justify-between items-center">
+            <h1 class="text-preset-1 text-ds-grey-900">Add to '{{ selectedPot.name }}'</h1>
+            <img src="/images/icon-close-modal.svg" alt="icon-close-modal" class="hover:cursor-pointer" (click)="closeAddToPotModal()" />
+        </div>        
+        <p class="text-preset-4 text-ds-grey-500">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus  hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet.
+        </p>
+
+        <div class="flex flex-col gap-4">
+            <div class="flex justify-between items-center">
+                <p class="text-preset-4 text-ds-grey-500">New Amount</p>
+                <p class="text-preset-1 text-ds-grey-900"> {{ selectedPot.total | currency }}</p>
+            </div>
+            <div class="relative h-2">
+                <div class="absolute top-0 left-0 h-2 bg-[{{ selectedPot.theme }}] rounded z-20" [style.width.%]="selectedPot.total / selectedPot.target * 100"></div>
+                <div class="absolute top-0 left-0 w-full h-2 bg-ds-beige-100 rounded z-10"></div>
+            </div>
+            <div class="flex justify-between">
+                <p class="text-preset-5-bold">{{ selectedPot.total / selectedPot.target * 100 | number: "1.0-2" }}%</p>
+                <p class="text-preset-5 text-ds-grey-500">Target of {{ selectedPot.target | currency }}</p>
+            </div>
+        </div>
+
+        <p class="text-preset-5-bold text-ds-grey-500">Amount to Withdraw</p>
+        <input type="number" placeholder="$" class="w-full py-3 pl-5 border rounded-lg"/>
+
+        <button class="w-full bg-ds-grey-900 rounded-lg flex justify-center py-4 text-white hover:bg-ds-grey-500 transition-all duration-300"
+            (click)="closeAddToPotModal()"
+        >
+            Confirm Addition
+        </button>
+      
+    </div>
+</div>
