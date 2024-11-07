@@ -23,13 +23,14 @@ export class PotsComponent {
   showWithdrawFromPotModal = false
   showAddToPotModal = false
 
+  potIndex:number|undefined
   selectedPot = {} as pot
 
-  openPotOptions(selectedPot:pot) {
-    if (this.selectedPot === selectedPot) {
-      this.selectedPot = {} as pot
+  openPotOptions(index:number) {
+    if(this.potIndex === index) {
+      this.potIndex = undefined
     } else {
-      this.selectedPot = selectedPot
+    this.potIndex = index
     }
   }
 
@@ -40,11 +41,13 @@ export class PotsComponent {
   openEditPotModal(selectedPot:pot) {
     this.showEditPotModal = true
     this.selectedPot = selectedPot
+    this.potIndex = undefined
   }
 
   openDeletePotModal(selectedPot:pot) {
     this.showDeletePotModal = true
     this.selectedPot = selectedPot
+    this.potIndex = undefined
   }
 
   openWithdrawFromPotModal(selectedPot:pot) {

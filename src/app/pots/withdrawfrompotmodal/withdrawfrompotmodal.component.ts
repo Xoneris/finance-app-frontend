@@ -10,11 +10,17 @@ import { Input, model } from '@angular/core';
   styles: ``
 })
 export class WithdrawfrompotmodalComponent {
+
+  withdrawlInput:number = 0
+  withdrawError:string = ""
+
   showWithdrawFromPotModal = model()
   @Input() selectedPot = {} as pot 
 
   closeWithdrawFromPotModal() {
     this.showWithdrawFromPotModal.set(false)
+    this.withdrawlInput = 0
+    this.withdrawError = ""
   }
 
   closeOnOutsideClick(event: MouseEvent) {
@@ -23,6 +29,17 @@ export class WithdrawfrompotmodalComponent {
       this.closeWithdrawFromPotModal()
     }
   }
+
+  updateWithdrawInput(e:Event) {
+    const searchTarget = e.target as HTMLInputElement
+    if(this.selectedPot.total - Number(searchTarget.value) >= 0) {
+      this.withdrawlInput = Number(searchTarget.value)
+      this.withdrawError = ""
+    } else {
+      this.withdrawError = "Cannot withdraw that much"
+    }
+  }
+
 }
 
 interface pot {

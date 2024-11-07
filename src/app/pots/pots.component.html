@@ -8,7 +8,7 @@
     </div>
 
     <div class="flex flex-col lg:flex-row flex-wrap gap-6">
-        @for (pot of pots; track pot.name; ) {
+        @for (pot of pots; track pot.name; let index = $index ) {
             <div class="flex flex-col flex-wrap w-full lg:w-[calc(50%-12px)] rounded-xl bg-white p-6 gap-8">
                 <div class="flex justify-between items-center">
                     <div class="flex gap-4 items-center">
@@ -17,10 +17,10 @@
                     </div>
 
                     <div class="relative">
-                        <img src="/images/icon-ellipsis.svg" alt="icon-ellipsis" class="hover:cursor-pointer" (click)="openPotOptions(pot)"/>
+                        <img src="/images/icon-ellipsis.svg" alt="icon-ellipsis" class="hover:cursor-pointer" (click)="openPotOptions(index)"/>
 
                         <div class="absolute top-4 right-0 w-[138px] h-[91px] flex flex-col bg-white rounded-lg py-3 px-5 border border-ds-grey-300 gap-3 z-50"
-                            [ngClass]="selectedPot.name === pot.name ? 'block' : 'hidden'"
+                        [ngClass]="potIndex === index ? 'block' : 'hidden'"
                         >
                             <p class="text-preset-4 text-ds-grey-900 hover:cursor-pointer" (click)="openEditPotModal(pot)">
                                 Edit Pot

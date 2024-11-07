@@ -11,11 +11,14 @@ import { model,Input } from '@angular/core';
 })
 export class AddtopotmodalComponent {
 
+  addingInput:number = 0
+
   showAddToPotModal = model()
   @Input() selectedPot = {} as pot 
 
   closeAddToPotModal() {
     this.showAddToPotModal.set(false)
+    this.addingInput = 0
   }
 
   closeOnOutsideClick(event: MouseEvent) {
@@ -23,6 +26,12 @@ export class AddtopotmodalComponent {
     if (targetElement.classList.contains('fixed')) {
       this.closeAddToPotModal()
     }
+  }
+
+  updateAddingInput(e:Event) {
+    const searchTarget = e.target as HTMLInputElement
+    this.addingInput = Number(searchTarget.value)
+
   }
 }
 
