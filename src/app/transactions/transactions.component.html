@@ -8,7 +8,6 @@
             <input type="search" placeholder="Search transaction" class="border border-ds-beige-500 w-full max-w-[320px] flex items-center rounded-lg py-3 pl-5"
                 [value]="searchTerm"
                 (input)="updateSearchTerm($event)"
-                
             />
             <div class="flex gap-6">
                 <div class="flex gap-2 items-center">
@@ -23,7 +22,24 @@
                         <option value="highest">Highest</option>
                         <option value="lowest">Lowest</option>
                     </select>
-                    <img src="/images/icon-sort-mobile.svg" alt="icon-sort-mobile" class="block md:hidden min-w-4 min-h-4"/>
+                    <div class="relative hover:cursor-pointer" (click)="toggleSortBy()">
+                        <img src="/images/icon-sort-mobile.svg" alt="icon-sort-mobile" class="block md:hidden min-w-4 min-h-4"/>
+                        <div class="absolute top-5 right-0 w-[177px] px-5 py-3 border flex-col gap-3 rounded-xl bg-white z-10"
+                            [ngClass]="showSortBy === true ? 'flex' : 'hidden'"
+                        >
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateSortByMobile('latest')">Latest</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateSortByMobile('oldest')">Oldest</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateSortByMobile('a-to-z')">A to Z</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateSortByMobile('z-to-a')">Z to A</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateSortByMobile('highest')">Highest</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateSortByMobile('lowest')">Lowest</p>    
+                        </div>
+                    </div>
                 </div>
                 <div class="flex gap-2 items-center">
                     <p class="hidden md:block text-preset-4 text-ds-grey-500">Category</p>
@@ -42,7 +58,34 @@
                         <option value="Shopping">Shopping</option>
                         <option value="General">General</option>
                     </select>
-                    <img src="/images/icon-filter-mobile.svg" alt="icon-filter-mobile" class="block md:hidden min-w-4 min-h-4"/>
+                    <div class="relative hover:cursor-pointer" (click)="toggleCategories()">
+                        <img src="/images/icon-filter-mobile.svg" alt="icon-filter-mobile" class="block md:hidden min-w-4 min-h-4"/>
+                        <div class="absolute top-5 right-0 w-[177px] px-5 py-3 border flex-col gap-3 rounded-xl bg-white z-10"
+                            [ngClass]="showCategorieToggle === true ? 'flex' : 'hidden'"
+                        >
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateCategoryMobile('')">All Transactions</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateCategoryMobile('Entertainment')">Entertainment</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateCategoryMobile('Bills')">Bills</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateCategoryMobile('Groceries')">Groceries</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateCategoryMobile('Dining Out')">Dining Out</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateCategoryMobile('Transportation')">Transportation</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateCategoryMobile('Personal Care')">Personal Care</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateCategoryMobile('Education')">Education</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateCategoryMobile('Lifestyle')">Lifestyle</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateCategoryMobile('Shopping')">Shopping</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateCategoryMobile('General')">General</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,7 +104,6 @@
                 @for (transaction of filteredTransactions().slice(pageination[0],pageination[1]); track transaction.name) {
                     <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
 
-                    
                     <div class="hidden md:flex justify-between items-center px-4">
                         <div class="flex items-center gap-4 w-1/2">
                             <img src="{{ transaction.avatar }}" alt="{{ transaction.name }}" class="rounded-full w-10 h-10"/>

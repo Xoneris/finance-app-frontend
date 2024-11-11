@@ -15,6 +15,8 @@ export class TransactionsComponent {
   searchTerm: string = ""
   sortBy: string = ""
   category: string = ""
+  showCategorieToggle: boolean = false
+  showSortBy: boolean = false
 
   temp = Math.floor(this.transactions.length / 10) + 1 
   pages: number[] = Array(this.temp).fill(0).map((x,i)=>i);
@@ -105,9 +107,17 @@ export class TransactionsComponent {
     this.sortBy = sortTarget.value
   }
 
+  updateSortByMobile(sortName:string) {
+    this.sortBy = sortName
+  }
+
   updateCategory(e:Event) {
     const categoryTarget = e.target as HTMLInputElement
     this.category = categoryTarget.value
+  }
+
+  updateCategoryMobile(categoryName:string) {
+    this.category = categoryName
   }
 
   updateSearchTerm(e:Event) {
@@ -117,6 +127,16 @@ export class TransactionsComponent {
       this.pageination[0] = 0;
       this.pageination[1] = 10;
     }
+  }
+
+  toggleSortBy() {
+    this.showSortBy = !this.showSortBy
+    this.showCategorieToggle = false
+  }
+
+  toggleCategories() {
+    this.showCategorieToggle = !this.showCategorieToggle
+    this.showSortBy = false
   }
 
   pageinationButton(start:number, end:number) {

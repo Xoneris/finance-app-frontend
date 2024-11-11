@@ -14,13 +14,7 @@ export class EditpotmodalComponent {
 
   pots = data.pots
   showEditPotModal = model()
-  @Input() selectedPot: pot = {
-    name: '',
-    target:0,
-    total:0,
-    theme:'',
-  }
-  // currentPot = this.pots.filter((pot) => pot.name === this.selectedPot)
+  @Input() selectedPot = {} as pot
 
   closeEditPotModal() {
     this.showEditPotModal.set(false)

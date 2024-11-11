@@ -31,7 +31,6 @@ export class AddtopotmodalComponent {
   updateAddingInput(e:Event) {
     const searchTarget = e.target as HTMLInputElement
     this.addingInput = Number(searchTarget.value)
-
   }
 }
 
