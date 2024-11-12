@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import * as data from '../../../data.json'
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-recurring-bills',
   standalone: true,
-  imports: [CurrencyPipe, DatePipe],
+  imports: [NgClass, CurrencyPipe, DatePipe],
   templateUrl: './recurring-bills.component.html',
   styleUrl: './recurring-bills.component.css'
 })
@@ -13,15 +13,24 @@ export class RecurringBillsComponent {
   recurringBills: any = (data.transactions.filter(bill => bill.recurring === true) as any);
   sortBy: string = ""
   searchTerm: string = ""
+  showSortBy: boolean = false
 
   updateSortBy(e:Event) {
     const sortTarget = e.target as HTMLInputElement
     this.sortBy = sortTarget.value
   }
 
+  updateSortByMobile(sortName:string) {
+    this.sortBy = sortName
+  }
+
   updateSearchTerm(e:Event) {
     const searchTarget = e.target as HTMLInputElement
     this.searchTerm = searchTarget.value
+  }
+
+  toggleSortBy() {
+    this.showSortBy = !this.showSortBy
   }
 
   filteredRecurringBills() {

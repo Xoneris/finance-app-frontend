@@ -36,14 +36,14 @@
         </div>
         <div class="flex flex-col w-full lg:w-[calc(66%-12px)] bg-white p-8 gap-6 rounded-xl">
 
-            <div class="flex justify-between">
-                <input type="search" placeholder="Search bills" class="rounded-lg border w-1/2 border-ds-beige-500 py-3 px-5"
+            <div class="flex justify-between gap-6">
+                <input type="search" placeholder="Search bills" class="rounded-lg border w-full max-w-[320px] border-ds-beige-500 py-3 px-5"
                     [value]="searchTerm"
                     (input)="updateSearchTerm($event)"
                 />
                 <div class="flex gap-2 items-center">
-                    <p class="text-preset-4 text-ds-grey-500">Sort by</p>
-                    <select class="rounded-lg border border-ds-beige-500 py-3 px-5"
+                    <p class="hidden md:block text-preset-4 text-ds-grey-500">Sort by</p>
+                    <select class="hidden md:block rounded-lg border border-ds-beige-500 py-3 px-5"
                         (change)="updateSortBy($event)"
                     >
                         <option value="latest">Latest</option>
@@ -53,7 +53,26 @@
                         <option value="highest">Highest</option>
                         <option value="lowest">Lowest</option>
                     </select>
+                    <div class="relative hover:cursor-pointer" (click)="toggleSortBy()">
+                        <img src="/images/icon-sort-mobile.svg" alt="icon-sort-mobile" class="block md:hidden min-w-4 min-h-4"/>
+                        <div class="absolute top-5 right-0 w-[177px] px-5 py-3 border flex-col gap-3 rounded-xl bg-white z-10"
+                            [ngClass]="showSortBy === true ? 'flex' : 'hidden'"
+                        >
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateSortByMobile('latest')">Latest</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateSortByMobile('oldest')">Oldest</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateSortByMobile('a-to-z')">A to Z</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateSortByMobile('z-to-a')">Z to A</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateSortByMobile('highest')">Highest</p>
+                            <div class="w-full h-[1px] bg-[#696868] opacity-15"></div>
+                            <p class="text-preset-4 text-ds-grey-900" (click)="updateSortByMobile('lowest')">Lowest</p>    
+                        </div>
+                    </div>
                 </div>
+                
             </div>
 
             <div class="justify-between py-3 px-4 hidden md:flex">

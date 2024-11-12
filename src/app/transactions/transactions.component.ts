@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import * as data from '../../../data.json'
-import { CurrencyPipe, DatePipe, NgClass, NgFor } from '@angular/common';
+import { CurrencyPipe, DatePipe, NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-transactions',
   standalone: true,
-  imports: [NgFor, NgClass, DatePipe, CurrencyPipe],
+  imports: [NgClass, DatePipe, CurrencyPipe],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.css'
 })
