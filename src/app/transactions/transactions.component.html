@@ -145,7 +145,7 @@
 
         <div class="flex justify-between items-center pt-6 gap-3">
             <button 
-                class="flex py-3 px-4 w-10 h-10 border items-center rounded-lg gap-4 transition-all duration-300"
+                class="flex py-3 px-4 min-w-10 min-h-10 border items-center rounded-lg gap-4 transition-all duration-300"
                 (click)="pageinationBack()"
                 [disabled]="pages.length > 1 ? false : true"
                 [ngClass]="pages.length > 1 ? 'group hover:bg-ds-beige-500' : null"
@@ -165,7 +165,7 @@
                 }
             </div>
             <button 
-                class="flex py-3 px-4 w-10 h-10 border items-center rounded-lg gap-4 transition-all duration-300"
+                class="flex py-3 px-4 min-w-10 min-h-10 border items-center rounded-lg gap-4 transition-all duration-300"
                 (click)="pageinationNext()"
                 [disabled]="pages.length > 1 ? false : true"
                 [ngClass]="pages.length > 1 ? 'group hover:bg-ds-beige-500' : null"
